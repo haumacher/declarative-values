@@ -7,4 +7,3 @@ Bundle-Vendor: haumacher.de
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.haumacher.common.config,
  de.haumacher.common.config.internal;x-internal:=true
-Import-Package: de.haumacher.common.util
