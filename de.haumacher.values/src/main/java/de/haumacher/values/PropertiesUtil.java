@@ -249,10 +249,11 @@ public class PropertiesUtil {
 	private static Object loadPrimitive(Properties properties, StringBuilder keyBuffer, Property property) {
 		String valueSource = properties.getProperty(keyBuffer.toString());
 		
-		Parser<Object> parser = property.getParser();
 		if (valueSource == null) {
-			return parser.init();
+			Initializer<Object> initializer = property.getInitializer();
+			return initializer.init();
 		} else {
+			Parser<Object> parser = property.getParser();
 			return parser.parse(valueSource);
 		}
 	}

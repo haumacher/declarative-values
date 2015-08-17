@@ -50,8 +50,13 @@ class PropertyImpl implements Property {
 		}
 	}
 
-	static abstract class ArrayParser implements Parser<Object> {
+	static abstract class ArrayParser implements Parser<Object>, Initializer<Object> {
 
+		@Override
+		public Initializer<Object> getDefaultInitializer() {
+			return this;
+		}
+		
 		@Override
 		public Object init() {
 			return createArray(0);
@@ -685,7 +690,7 @@ class PropertyImpl implements Property {
 	private Kind kind;
 	private Class<?> type;
 	private Property indexProperty;
-	private Initializer<?> initializer;
+	private Initializer<Object> initializer;
 	private Parser<Object> parser;
 
 	private final ValueDescriptorImpl<?> descriptor;
@@ -804,7 +809,7 @@ class PropertyImpl implements Property {
 				throw (AssertionError)new AssertionError("Parser cannot be instantiated.").initCause(ex);
 			}
 			if (initializer == null) {
-				this.initializer = parser;
+				this.initializer = parser.getDefaultInitializer();
 			}
 		}
 		else if (proposedGetter.getAnnotation(Reference.class) != null) {
@@ -878,7 +883,8 @@ class PropertyImpl implements Property {
 		this.getter = proposedGetter;
 	}
 	
-	Initializer<?> getInitializer() {
+	@Override
+	public Initializer<Object> getInitializer() {
 		return initializer;
 	}
 

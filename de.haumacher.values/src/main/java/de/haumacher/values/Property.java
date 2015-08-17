@@ -14,4 +14,6 @@ public interface Property {
 
 	Parser<Object> getParser();
 	
+	Initializer<Object> getInitializer();
+	
 }

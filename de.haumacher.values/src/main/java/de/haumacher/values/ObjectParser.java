@@ -1,7 +1,12 @@
 package de.haumacher.values;
 
 
-public abstract class ObjectParser<T> implements Parser<T> {
+public abstract class ObjectParser<T> implements Parser<T>, Initializer<T> {
+	
+	@Override
+	public Initializer<T> getDefaultInitializer() {
+		return this;
+	}
 	
 	@Override
 	public T init() {

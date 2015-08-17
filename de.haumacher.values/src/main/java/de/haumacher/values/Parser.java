@@ -1,6 +1,6 @@
 package de.haumacher.values;
 
-public interface Parser<T> extends Initializer<T> {
+public interface Parser<T> {
 	T parse(String text);
 
 	String unparse(T value);
@@ -8,4 +8,7 @@ public interface Parser<T> extends Initializer<T> {
 	boolean equals(T value1, T value2);
 
 	int hashCode(T value);
+
+	Initializer<T> getDefaultInitializer();
+
 }
