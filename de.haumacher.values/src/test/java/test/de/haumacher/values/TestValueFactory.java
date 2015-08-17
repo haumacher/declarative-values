@@ -568,7 +568,7 @@ public class TestValueFactory extends TestCase {
 	
 	public void testToString() {
 		B b = newBWithCustomValues();
-		assertEquals("test.de.haumacher.common.config.TestValueFactory$B{z: 255; y: 42; x: 13}", b.toString());
+		assertEquals(TestValueFactory.class.getName() + "$B{z: 255; y: 42; x: 13}", b.toString());
 	}
 	
 	public interface BooleanGetters {
