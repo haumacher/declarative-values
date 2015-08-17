@@ -1,4 +1,4 @@
-package test.de.haumacher.common.config;
+package test.de.haumacher.values;
 
 import java.io.File;
 import java.util.Arrays;
@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import de.haumacher.values.DefaultValue;
+import de.haumacher.values.IndexProperty;
+import de.haumacher.values.PropertiesUtil;
+import de.haumacher.values.Property;
+import de.haumacher.values.Value;
+import de.haumacher.values.ValueFactory;
 import junit.framework.TestCase;
-import test.de.haumacher.common.config.TestValueFactory.AllTypes.Nested;
-import de.haumacher.common.config.DefaultValue;
-import de.haumacher.common.config.IndexProperty;
-import de.haumacher.common.config.PropertiesUtil;
-import de.haumacher.common.config.Property;
-import de.haumacher.common.config.Value;
-import de.haumacher.common.config.ValueFactory;
+import test.de.haumacher.values.TestValueFactory.AllTypes.Nested;
 
 public class TestValueFactory extends TestCase {
 

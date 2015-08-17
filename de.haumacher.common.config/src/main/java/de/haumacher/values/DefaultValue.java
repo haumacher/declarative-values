@@ -1,4 +1,4 @@
-package de.haumacher.common.config;
+package de.haumacher.values;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

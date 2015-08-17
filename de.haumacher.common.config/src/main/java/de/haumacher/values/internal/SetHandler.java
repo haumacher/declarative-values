@@ -1,6 +1,6 @@
-package de.haumacher.common.config.internal;
+package de.haumacher.values.internal;
 
-import de.haumacher.common.config.internal.ValueDescriptorImpl.ValueImpl;
+import de.haumacher.values.internal.ValueDescriptorImpl.ValueImpl;
 
 
 

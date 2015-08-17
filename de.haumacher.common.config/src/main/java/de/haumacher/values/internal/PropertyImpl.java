@@ -1,4 +1,4 @@
-package de.haumacher.common.config.internal;
+package de.haumacher.values.internal;
 
 import java.io.File;
 import java.lang.reflect.Array;
@@ -13,17 +13,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.haumacher.common.config.DefaultValue;
-import de.haumacher.common.config.IndexProperty;
-import de.haumacher.common.config.Initializer;
-import de.haumacher.common.config.Kind;
-import de.haumacher.common.config.ObjectParser;
-import de.haumacher.common.config.Parser;
-import de.haumacher.common.config.Property;
-import de.haumacher.common.config.Reference;
-import de.haumacher.common.config.ValueDescriptor;
-import de.haumacher.common.config.ValueFactory;
-import de.haumacher.common.config.annotate.ValueParser;
+import de.haumacher.values.DefaultValue;
+import de.haumacher.values.IndexProperty;
+import de.haumacher.values.Initializer;
+import de.haumacher.values.Kind;
+import de.haumacher.values.ObjectParser;
+import de.haumacher.values.Parser;
+import de.haumacher.values.Property;
+import de.haumacher.values.Reference;
+import de.haumacher.values.ValueDescriptor;
+import de.haumacher.values.ValueFactory;
+import de.haumacher.values.annotate.ValueParser;
 
 
 class PropertyImpl implements Property {

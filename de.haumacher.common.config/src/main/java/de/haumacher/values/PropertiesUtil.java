@@ -1,4 +1,4 @@
-package de.haumacher.common.config;
+package de.haumacher.values;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

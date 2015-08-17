@@ -1,9 +1,9 @@
-package de.haumacher.common.config;
+package de.haumacher.values;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import de.haumacher.common.config.internal.ValueDescriptorImpl;
+import de.haumacher.values.internal.ValueDescriptorImpl;
 
 public class ValueFactory {
 

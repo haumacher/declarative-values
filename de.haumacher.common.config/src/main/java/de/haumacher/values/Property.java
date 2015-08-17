@@ -1,4 +1,4 @@
-package de.haumacher.common.config;
+package de.haumacher.values;
 
 public interface Property {
 

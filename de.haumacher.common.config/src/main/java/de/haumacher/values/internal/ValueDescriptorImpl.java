@@ -1,4 +1,4 @@
-package de.haumacher.common.config.internal;
+package de.haumacher.values.internal;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import de.haumacher.common.config.Kind;
-import de.haumacher.common.config.Property;
-import de.haumacher.common.config.Value;
-import de.haumacher.common.config.ValueDescriptor;
+import de.haumacher.values.Kind;
+import de.haumacher.values.Property;
+import de.haumacher.values.Value;
+import de.haumacher.values.ValueDescriptor;
 
 public class ValueDescriptorImpl<T> implements ValueDescriptor<T> {
 

@@ -1,4 +1,4 @@
-package de.haumacher.common.config.util;
+package de.haumacher.values.util;
 
 import java.util.Collection;
 import java.util.Collections;

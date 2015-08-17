@@ -1,4 +1,4 @@
-package de.haumacher.common.config.internal;
+package de.haumacher.values.internal;
 
 
 abstract class PropertyHandler implements MethodHandler {
