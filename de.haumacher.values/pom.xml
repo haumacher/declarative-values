@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+
+<!-- 
+	Copyright (c) 2012-2015, Bernhard Haumacher. 
+	All rights reserved.
+	
+	This library is free software; you can redistribute it and/or
+	modify it under the terms of the GNU Lesser General Public
+	License as published by the Free Software Foundation; either
+	version 3 of the License, or (at your option) any later version.
+	
+	This library is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	Lesser General Public License for more details.
+	
+	You should have received a copy of the GNU Lesser General Public
+	License along with this library; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+	MA 02110-1301  USA
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.haumacher</groupId>
+	<artifactId>values</artifactId>
+	<version>0.2-SNAPSHOT</version>
+
+	<name>Declarative value classes</name>
+
+	<description></description>
+
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License</name>
+			<url>http://www.gnu.org/licenses/lgpl-3.0.en.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>haui</id>
+			<name>Bernhard Haumacher</name>
+			<email></email>
+		</developer>
+	</developers>
+
+	<repositories>
+	</repositories>
+
+	<pluginRepositories>
+	</pluginRepositories>
+
+	<distributionManagement>
+	</distributionManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<compileTarget>1.6</compileTarget>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<extensions>
+		</extensions>
+		<pluginManagement>
+			<plugins>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+		</plugins>
+	</reporting>
+
+	<organization>
+		<name>haumacher.de</name>
+	</organization>
+</project>
