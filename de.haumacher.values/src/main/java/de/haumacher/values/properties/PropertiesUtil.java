@@ -1,4 +1,4 @@
-package de.haumacher.values;
+package de.haumacher.values.properties;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,6 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import de.haumacher.values.Initializer;
+import de.haumacher.values.Parser;
+import de.haumacher.values.Property;
+import de.haumacher.values.Value;
+import de.haumacher.values.ValueDescriptor;
+import de.haumacher.values.ValueFactory;
+
 import java.util.Properties;
 
 

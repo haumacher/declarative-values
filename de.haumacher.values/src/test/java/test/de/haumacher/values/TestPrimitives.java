@@ -3,9 +3,9 @@ package test.de.haumacher.values;
 
 import java.util.Properties;
 
-import de.haumacher.values.PropertiesUtil;
 import de.haumacher.values.Value;
 import de.haumacher.values.ValueFactory;
+import de.haumacher.values.properties.PropertiesUtil;
 import junit.framework.TestCase;
 
 /**

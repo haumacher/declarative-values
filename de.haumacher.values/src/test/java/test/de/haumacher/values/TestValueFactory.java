@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import de.haumacher.values.PropertiesUtil;
 import de.haumacher.values.Property;
 import de.haumacher.values.Value;
 import de.haumacher.values.ValueFactory;
 import de.haumacher.values.annotate.DefaultValue;
 import de.haumacher.values.annotate.IndexProperty;
+import de.haumacher.values.properties.PropertiesUtil;
 import junit.framework.TestCase;
 import test.de.haumacher.values.TestValueFactory.AllTypes.Nested;
 
