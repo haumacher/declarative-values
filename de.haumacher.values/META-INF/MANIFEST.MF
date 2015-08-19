@@ -1,9 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Config
+Bundle-Name: Declarative Values
 Bundle-SymbolicName: de.haumacher.values
 Bundle-Version: 1.0.0
 Bundle-Vendor: haumacher.de
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.haumacher.values,
- de.haumacher.values.internal;x-internal:=true
+ de.haumacher.values.annotate,
+ de.haumacher.values.util
