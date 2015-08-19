@@ -21,6 +21,7 @@ import de.haumacher.values.ValueDescriptor;
 import de.haumacher.values.ValueFactory;
 import de.haumacher.values.annotate.DefaultValue;
 import de.haumacher.values.annotate.IndexProperty;
+import de.haumacher.values.annotate.Name;
 import de.haumacher.values.annotate.Reference;
 import de.haumacher.values.annotate.ValueParser;
 import de.haumacher.values.format.ObjectParser;
@@ -680,7 +681,10 @@ class PropertyImpl implements Property {
 		}
 	};
 	
-	private final String name;
+	/**
+	 * The public property name that may be explicitly assigned by the @Name annotation on the getter method.
+	 */
+	private String name;
 	private final int index;
 	
 	private MethodHandler getHandler;
@@ -695,9 +699,9 @@ class PropertyImpl implements Property {
 
 	private final ValueDescriptorImpl<?> descriptor;
 
-	public PropertyImpl(ValueDescriptorImpl<?> descriptor, String propertyName, int index) {
+	public PropertyImpl(ValueDescriptorImpl<?> descriptor, String rawName, int index) {
 		this.descriptor = descriptor;
-		this.name = propertyName;
+		this.name = rawName;
 		this.index = index;
 	}
 
@@ -749,7 +753,12 @@ class PropertyImpl implements Property {
 		
 		Class<?> accessType = proposedGetter.getReturnType();
 		Type genericType = proposedGetter.getGenericReturnType();
-		
+
+		Name nameAnnotation = proposedGetter.getAnnotation(Name.class);
+		if (nameAnnotation != null) {
+			name = nameAnnotation.value();
+		}
+
 		DefaultValue defaultAnnotation = proposedGetter.getAnnotation(DefaultValue.class);
 		if (defaultAnnotation != null) {
 			if (defaultAnnotation.initializer() != Initializer.class) {

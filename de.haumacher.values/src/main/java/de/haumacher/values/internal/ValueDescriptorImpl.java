@@ -25,7 +25,7 @@ public class ValueDescriptorImpl<T> implements ValueDescriptor<T> {
 		public ValueImpl(ValueDescriptorImpl<?> descriptor) {
 			this.descriptor = descriptor;
 			this.values = new Object[descriptor.getSize()];
-			Collection<PropertyImpl> properties = descriptor.properties.values();
+			Collection<PropertyImpl> properties = descriptor.internalGetProperties();
 			for (PropertyImpl property : properties) {
 				values[property.getIndex()] = property.getInitializer().init();
 			}
@@ -194,6 +194,7 @@ public class ValueDescriptorImpl<T> implements ValueDescriptor<T> {
 	}
 
 	public void init() {
+		Map<String, PropertyImpl> propertyByRawName = new HashMap<String, PropertyImpl>();
 		Map<Method, PropertyImpl> propertyByMethod = new HashMap<Method, PropertyImpl>();
 		for (Method method : valueInterface.getMethods()) {
 			if (method.getDeclaringClass().isAssignableFrom(Value.class)) {
@@ -275,13 +276,13 @@ public class ValueDescriptorImpl<T> implements ValueDescriptor<T> {
 				throw new AssertionError("Expected upper case letter after method prefix: " + method);
 			}
 			
-			String propertyName = Character.toLowerCase(postfix.charAt(0)) + postfix.substring(1);
+			String rawName = Character.toLowerCase(postfix.charAt(0)) + postfix.substring(1);
 			
-			PropertyImpl property = properties.get(propertyName);
+			PropertyImpl property = propertyByRawName.get(rawName);
 			if (property == null) {
-				int index = properties.size();
-				property = new PropertyImpl(this, propertyName, index);
-				properties.put(propertyName, property);
+				int index = propertyByRawName.size();
+				property = new PropertyImpl(this, rawName, index);
+				propertyByRawName.put(rawName, property);
 			}
 			
 			if (isGetter) {
@@ -289,6 +290,13 @@ public class ValueDescriptorImpl<T> implements ValueDescriptor<T> {
 			}
 
 			propertyByMethod.put(method, property);
+		}
+		
+		for (PropertyImpl property : propertyByRawName.values()) {
+			PropertyImpl clash = properties.put(property.getName(), property);
+			if (clash != null) {
+				throw new IllegalArgumentException("Properties must have unique names in interface '" + valueInterface.getName() + "': " + clash.getName());
+			}
 		}
 		
 		for (Entry<Method, PropertyImpl> entry : propertyByMethod.entrySet()) {
