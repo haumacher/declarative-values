@@ -1,7 +1,9 @@
-package de.haumacher.values;
+package de.haumacher.values.annotate;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+
+import de.haumacher.values.Initializer;
 
 
 @Retention(RetentionPolicy.RUNTIME)
