@@ -1,5 +1,7 @@
-package de.haumacher.values;
+package de.haumacher.values.format;
 
+import de.haumacher.values.Initializer;
+import de.haumacher.values.Parser;
 
 public abstract class ObjectParser<T> implements Parser<T>, Initializer<T> {
 	

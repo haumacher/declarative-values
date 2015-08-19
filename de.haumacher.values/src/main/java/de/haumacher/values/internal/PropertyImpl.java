@@ -15,7 +15,6 @@ import java.util.Map;
 
 import de.haumacher.values.Initializer;
 import de.haumacher.values.Kind;
-import de.haumacher.values.ObjectParser;
 import de.haumacher.values.Parser;
 import de.haumacher.values.Property;
 import de.haumacher.values.ValueDescriptor;
@@ -24,6 +23,7 @@ import de.haumacher.values.annotate.DefaultValue;
 import de.haumacher.values.annotate.IndexProperty;
 import de.haumacher.values.annotate.Reference;
 import de.haumacher.values.annotate.ValueParser;
+import de.haumacher.values.format.ObjectParser;
 
 
 class PropertyImpl implements Property {
