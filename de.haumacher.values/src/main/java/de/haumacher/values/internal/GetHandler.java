@@ -29,7 +29,7 @@ class GetHandler extends PropertyHandler {
 	}
 
 	@Override
-	public Object handlePropertyAccess(Object self, ValueImpl impl, Object[] args) {
+	public Object handlePropertyAccess(Object self, ValueImpl impl, Object... args) {
 		return impl.values[index];
 	}
 

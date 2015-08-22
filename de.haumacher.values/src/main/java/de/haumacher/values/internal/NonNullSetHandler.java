@@ -22,7 +22,7 @@ package de.haumacher.values.internal;
 import de.haumacher.values.Initializer;
 import de.haumacher.values.internal.ValueDescriptorImpl.ValueImpl;
 
-public class NonNullSetHandler extends SetHandler {
+class NonNullSetHandler extends SetHandler {
 
 	private final Initializer<?> initializer;
 
@@ -33,7 +33,7 @@ public class NonNullSetHandler extends SetHandler {
 	}
 
 	@Override
-	public Object handlePropertyAccess(Object self, ValueImpl impl, Object[] args) {
+	public Object handlePropertyAccess(Object self, ValueImpl impl, Object... args) {
 		if (args[0] == null) {
 			args[0] = initializer.init();
 		}

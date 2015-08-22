@@ -22,9 +22,29 @@ package de.haumacher.values.annotate;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+import de.haumacher.values.Kind;
+
+/**
+ * Annotation to a {@link Kind#INDEX} property providing the name of the
+ * content's property for indexing the value collection.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IndexProperty {
 
+	/**
+	 * Property name used for indexing a collection-valued property.
+	 * 
+	 * <p>
+	 * A property <code>xs</code> declared as <code>Map<K, X> getXs()</code>
+	 * must be annotated with the {@link IndexProperty} to be used as keys in
+	 * the mapping. Semantically, the value of such a property consists of a
+	 * collection of <code>X</code> values. At the API level, this collection is
+	 * indexed by the value of the annotated {@link IndexProperty}.
+	 * </p>
+	 */
 	String value();
 
 }

@@ -548,6 +548,7 @@ class PropertyImpl implements Property {
 			return elementParser.parse(token);
 		}
 
+		@SuppressWarnings("unchecked")
 		@Override
 		protected String unparseElement(Object element) {
 			return elementParser.unparse((T) element);
@@ -560,7 +561,7 @@ class PropertyImpl implements Property {
 
 	}
 
-	class ValueInitializer implements Initializer<Object> {
+	static class ValueInitializer implements Initializer<Object> {
 
 		private final ValueDescriptor<?> descriptor;
 
@@ -780,9 +781,13 @@ class PropertyImpl implements Property {
 
 		DefaultValue defaultAnnotation = proposedGetter.getAnnotation(DefaultValue.class);
 		if (defaultAnnotation != null) {
-			if (defaultAnnotation.initializer() != Initializer.class) {
+			Class<? extends Initializer<?>> initializerClass = defaultAnnotation.initializer();
+			if (initializerClass != NoInitializer.class) {
 				try {
-					initializer = defaultAnnotation.initializer().newInstance();
+					@SuppressWarnings("unchecked")
+					Initializer<Object> annotatedInitializer = 
+						(Initializer<Object>) initializerClass.newInstance();
+					initializer = annotatedInitializer;
 				} catch (InstantiationException ex) {
 					throw (AssertionError) new AssertionError("Cannot instantiate initializer.").initCause(ex);
 				} catch (IllegalAccessException ex) {
@@ -830,7 +835,10 @@ class PropertyImpl implements Property {
 			this.setHandler = new SetHandler(index);
 			
 			try {
-				this.parser = parserAnnotation.value().newInstance();
+				@SuppressWarnings("unchecked")
+				Parser<Object> annotatedParser = 
+					(Parser<Object>) parserAnnotation.value().newInstance();
+				this.parser = annotatedParser;
 			} catch (InstantiationException ex) {
 				throw (AssertionError)new AssertionError("Parser cannot be instantiated.").initCause(ex);
 			} catch (IllegalAccessException ex) {
@@ -895,7 +903,9 @@ class PropertyImpl implements Property {
 				this.initializer = new ConstantInitializer(nullValue.get(accessType));
 			}
 			this.setHandler = new NonNullSetHandler(index, initializer);
-			this.parser = (Parser) parsers.get(accessType);
+			@SuppressWarnings("unchecked")
+			Parser<Object> defaultParser = (Parser<Object>) parsers.get(accessType);
+			this.parser = defaultParser;
 		}
 		else {
 			this.kind = Kind.VALUE;

@@ -23,29 +23,70 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import de.haumacher.values.Initializer;
+import de.haumacher.values.Property;
+import de.haumacher.values.internal.NoInitializer;
 
-
+/**
+ * Annotation of the default value of a {@link Property}.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DefaultValue {
 	
+	/**
+	 * Default value of a {@link Boolean} {@link Property}.
+	 */
 	boolean booleanValue() default false;
 	
+	/**
+	 * Default value of a {@link Byte} {@link Property}.
+	 */
 	byte byteValue() default 0;
 	
+	/**
+	 * Default value of a {@link Character} {@link Property}.
+	 */
 	char charValue() default 0;
 	
+	/**
+	 * Default value of a {@link Short} {@link Property}.
+	 */
 	short shortValue() default 0;
 	
+	/**
+	 * Default value of an {@link Integer} {@link Property}.
+	 */
 	int intValue() default 0;
 	
+	/**
+	 * Default value of a {@link Long} {@link Property}.
+	 */
 	long longValue() default 0l;
 	
+	/**
+	 * Default value of a {@link Float} {@link Property}.
+	 */
 	float floatValue() default 0f;
 	
+	/**
+	 * Default value of a {@link Double} {@link Property}.
+	 */
 	double doubleValue() default 0d;
 	
+	/**
+	 * Default value of a {@link String} {@link Property}.
+	 */
 	String stringValue() default "";
 	
-	Class<? extends Initializer> initializer() default Initializer.class;
+	/**
+	 * Generic default value specification through an {@link Initializer} class.
+	 * 
+	 * <p>
+	 * This definition is used for non-primitive types.
+	 * </p>
+	 */
+	Class<? extends Initializer<?>> initializer() default NoInitializer.class;
 	
 }

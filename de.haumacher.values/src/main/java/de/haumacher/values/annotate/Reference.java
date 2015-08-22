@@ -22,7 +22,18 @@ package de.haumacher.values.annotate;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+import de.haumacher.values.Kind;
+import de.haumacher.values.Property;
+
+/**
+ * Defines a {@link Kind#REFERENCE} {@link Property}.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Reference {
+
+	// Marker annotation.
 
 }

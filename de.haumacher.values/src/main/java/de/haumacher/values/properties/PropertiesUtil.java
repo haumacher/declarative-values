@@ -35,7 +35,13 @@ import de.haumacher.values.Value;
 import de.haumacher.values.ValueDescriptor;
 import de.haumacher.values.ValueFactory;
 
-
+/**
+ * Utility methods to load/store {@link Value} types from/to {@link Properties}
+ * files.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
 public class PropertiesUtil {
 
 	private static final Map<Class<?>, Class<?>> wrapperTypes = new HashMap<Class<?>, Class<?>>();
@@ -44,24 +50,86 @@ public class PropertiesUtil {
 		wrapperTypes.put(boolean.class, Boolean.class);
 		wrapperTypes.put(byte.class, Byte.class);
 		wrapperTypes.put(short.class, Short.class);
+		wrapperTypes.put(char.class, Character.class);
 		wrapperTypes.put(int.class, Integer.class);
 		wrapperTypes.put(long.class, Long.class);
 		wrapperTypes.put(float.class, Float.class);
 		wrapperTypes.put(double.class, Double.class);
 	}
 
+	/**
+	 * From the given {@link Properties} file, load an instance of the given
+	 * {@link Value} type.
+	 * 
+	 * @param fileName
+	 *        The name of the {@link Properties} file to load.
+	 * @param type
+	 *        The type defining the typed properties.
+	 * @return An instance of the given {@link Value} type providing typed
+	 *         access to the defined properties.
+	 * @throws IOException
+	 *         If accessing the file fails.
+	 * 
+	 * @see #load(Properties, Class)
+	 */
 	public static <T extends Value> T load(String fileName, Class<T> type) throws IOException {
 		return load(loadProperties(fileName), type);
 	}
 
+	/**
+	 * Provides typed access to the given {@link Properties}.
+	 * 
+	 * @param properties
+	 *        The generic key/value pairs to interpret.
+	 * @param type
+	 *        The type defining the typed properties.
+	 * @return An instance of the given {@link Value} type providing typed
+	 *         access to the given untyped generic properties.
+	 * 
+	 * @see #load(Properties, String, Class)
+	 */
 	public static <T extends Value> T load(Properties properties, Class<T> type) {
 		return load(properties, "", type);
 	}
 	
+	/**
+	 * Like {@link #load(String, Class)}, but interpreting only properties whose
+	 * key starts with the given prefix.
+	 * 
+	 * @param fileName
+	 *        The name of the {@link Properties} file to load.
+	 * @param prefix
+	 *        The prefix to strip from each key in the given {@link Properties}
+	 *        file. Properties with keys that have not the given prefix are
+	 *        ignored.
+	 * @param type
+	 *        The type defining the typed properties.
+	 * @return An instance of the given {@link Value} type providing typed
+	 *         access to the defined properties.
+	 * @throws IOException
+	 *         If accessing the file fails.
+	 * 
+	 * @see #load(Properties, String, Class)
+	 */
 	public static <T extends Value> T load(String fileName, String prefix, Class<T> type) throws IOException {
 		return load(loadProperties(fileName), prefix, type);
 	}
 
+	/**
+	 * Like {@link #load(Properties, Class)}, but interpreting only properties
+	 * whose key starts with the given prefix.
+	 * 
+	 * @param properties
+	 *        The generic key/value pairs to interpret.
+	 * @param prefix
+	 *        The prefix to strip from each key in the given {@link Properties}
+	 *        file. Properties with keys that have not the given prefix are
+	 *        ignored.
+	 * @param type
+	 *        The type defining the typed properties.
+	 * @return An instance of the given {@link Value} type providing typed
+	 *         access to the given untyped generic properties.
+	 */
 	public static <T extends Value> T load(Properties properties, String prefix, Class<T> type) {
 		ValueDescriptor<T> descriptor = ValueFactory.getDescriptor(type);
 		T obj = descriptor.newInstance();
@@ -71,36 +139,130 @@ public class PropertiesUtil {
 		return obj;
 	}
 	
+	/**
+	 * Applies the contents of the given {@link Properties} file to the given
+	 * {@link Value} instance.
+	 * 
+	 * @param fileName
+	 *        The name of the {@link Properties} file to load.
+	 * @param obj
+	 *        The {@link Value} instance to update with the contents of the
+	 *        given {@link Properties} file.
+	 * @throws IOException
+	 *         If accessing the file fails.
+	 * 
+	 * @see #load(Properties, Value)
+	 */
 	public static void load(String fileName, Value obj) throws IOException {
 		load(loadProperties(fileName), obj);
 	}
 
+	/**
+	 * Applies the contents of the given untyped {@link Properties} to the given
+	 * {@link Value} instance.
+	 * 
+	 * @param properties
+	 *        The untyped {@link Properties} contents.
+	 * @param obj
+	 *        The {@link Value} instance to update with the contents of the
+	 *        given {@link Properties}.
+	 * 
+	 * @see #load(Properties, String, Value)
+	 */
 	public static void load(Properties properties, Value obj) {
 		load(properties, "", obj);
 	}
 	
+	/**
+	 * Applies the contents of the given untyped {@link Properties} file to the
+	 * given {@link Value} instance.
+	 * 
+	 * @param fileName
+	 *        File name of an untyped {@link Properties} file.
+	 * @param prefix
+	 *        The prefix to strip from each key in the given {@link Properties}
+	 *        file. Properties with keys that have not the given prefix are
+	 *        ignored.
+	 * @param obj
+	 *        The {@link Value} instance to update with the contents of the
+	 *        given {@link Properties}.
+	 */
 	public static void load(String fileName, String prefix, Value obj) throws IOException {
 		load(loadProperties(fileName), prefix, obj);
 	}
 
+	/**
+	 * Applies the contents of the given untyped {@link Properties} to the given
+	 * {@link Value} instance.
+	 * 
+	 * @param properties
+	 *        The untyped {@link Properties} contents.
+	 * @param prefix
+	 *        The prefix to strip from each key in the given {@link Properties}.
+	 *        Properties with keys that have not the given prefix are ignored.
+	 * @param obj
+	 *        The {@link Value} instance to update with the contents of the
+	 *        given {@link Properties}.
+	 */
 	public static void load(Properties properties, String prefix, Value obj) {
 		StringBuilder keyBuffer = new StringBuilder();
 		keyBuffer.append(prefix);
 		loadValue(properties, keyBuffer, obj);
 	}
 	
+	/**
+	 * Stores the given {@link Value} object to a {@link Properties} file.
+	 * 
+	 * @param fileName
+	 *        File name of an untyped {@link Properties} file to create.
+	 * @param obj
+	 *        {@link Value} instance to store.
+	 * @throws IOException
+	 *         If accessing the file fails.
+	 */
 	public static void save(String fileName, Value obj) throws IOException {
 		storeProperties(save(new Properties(), obj), fileName);
 	}
 
+	/**
+	 * Stores the given {@link Value} object into an untyped {@link Properties}
+	 * map.
+	 * 
+	 * @param properties
+	 *        Untyped {@link Properties} map to modify.
+	 * @param obj
+	 *        {@link Value} instance to store.
+	 */
 	public static Properties save(Properties properties, Value obj) {
 		return save(properties, "", obj);
 	}
 
+	/**
+	 * Stores the given {@link Value} object into an untyped {@link Properties}
+	 * file.
+	 * 
+	 * @param fileName
+	 *        File name of an untyped {@link Properties} file to create.
+	 * @param prefix
+	 *        The prefix to prepend each generated properties key with.
+	 * @param obj
+	 *        {@link Value} instance to store.
+	 */
 	public static void save(String fileName, String prefix, Value obj) throws IOException {
 		storeProperties(save(new Properties(), prefix, obj), fileName);
 	}
 
+	/**
+	 * Stores the given {@link Value} object into an untyped {@link Properties}
+	 * map.
+	 * 
+	 * @param properties
+	 *        Untyped {@link Properties} map to modify.
+	 * @param prefix
+	 *        The prefix to prepend each generated properties key with.
+	 * @param obj
+	 *        {@link Value} instance to store.
+	 */
 	public static Properties save(Properties properties, String prefix, Value obj) {
 		StringBuilder keyBuffer = new StringBuilder();
 		keyBuffer.append(prefix);
@@ -284,6 +446,15 @@ public class PropertiesUtil {
 		}
 	}
 
+	/**
+	 * Reads the given {@link Properties} file.
+	 * 
+	 * @param fileName
+	 *        The file name to access.
+	 * @return The untyped {@link Properties} read.
+	 * @throws IOException
+	 *         If accessing the file fails.
+	 */
 	public static Properties loadProperties(String fileName) throws IOException {
 		Properties result = new Properties();
 		FileInputStream in = new FileInputStream(fileName);
@@ -295,10 +466,34 @@ public class PropertiesUtil {
 		return result;
 	}
 
+	/**
+	 * Stores the given untyped {@link Properties} to a file.
+	 * 
+	 * @param properties
+	 *        The {@link Properties} to store.
+	 * @param fileName
+	 *        The file name to create.
+	 * @throws IOException
+	 *         If accessing the file fails.
+	 * 
+	 * @see #storeProperties(Properties, String, String)
+	 */
 	public static void storeProperties(Properties properties, String fileName) throws IOException {
 		storeProperties(properties, fileName, null);
 	}
 
+	/**
+	 * Stores the given untyped {@link Properties} to a file.
+	 * 
+	 * @param properties
+	 *        The {@link Properties} to store.
+	 * @param fileName
+	 *        The file name to create.
+	 * @param comment
+	 *        The file header comment to use.
+	 * @throws IOException
+	 *         If accessing the file fails.
+	 */
 	public static void storeProperties(Properties properties, String fileName, String comment) throws IOException {
 		FileOutputStream out = new FileOutputStream(fileName);
 		try {

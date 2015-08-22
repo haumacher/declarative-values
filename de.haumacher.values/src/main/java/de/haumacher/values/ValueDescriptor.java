@@ -21,12 +21,30 @@ package de.haumacher.values;
 
 import java.util.Map;
 
+/**
+ * Type description of a concrete {@link Value} type.
+ * 
+ * @see ValueFactory#getDescriptor(Class)
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
 public interface ValueDescriptor<T> {
 
+	/**
+	 * The properties of the described type indexed by their
+	 * {@link Property#getName()}.
+	 */
 	Map<String, Property> getProperties();
 
+	/**
+	 * Creates a new instance of the described type.
+	 */
 	T newInstance();
 
+	/**
+	 * The interface class this {@link ValueDescriptor} was derived from.
+	 */
 	Class<T> getValueInterface();
 
 }

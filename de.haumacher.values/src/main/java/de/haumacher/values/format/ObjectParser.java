@@ -22,6 +22,12 @@ package de.haumacher.values.format;
 import de.haumacher.values.Initializer;
 import de.haumacher.values.Parser;
 
+/**
+ * Base class for custom {@link Parser} implementations.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
 public abstract class ObjectParser<T> implements Parser<T>, Initializer<T> {
 	
 	@Override

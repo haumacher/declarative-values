@@ -35,6 +35,14 @@ import de.haumacher.values.properties.PropertiesUtil;
 import junit.framework.TestCase;
 import test.de.haumacher.values.TestValueFactory.AllTypes.Nested;
 
+/**
+ * Test for {@link ValueFactory} using {@link Value} with properties of all
+ * common types.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
+@SuppressWarnings("javadoc")
 public class TestValueFactory extends TestCase {
 
 	public interface AllTypes extends Value {
@@ -344,7 +352,7 @@ public class TestValueFactory extends TestCase {
 		
 		assertEquals(true, a1.getBooleanValue());
 		assertEquals((byte)3, a1.getByteValue());
-		assertEquals((char)'A', a1.getCharValue());
+		assertEquals('A', a1.getCharValue());
 		assertEquals((short) 5, a1.getShortValue());
 		assertEquals(7, a1.getIntValue());
 		assertEquals(13.3F, a1.getFloatValue());

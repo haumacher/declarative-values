@@ -19,8 +19,19 @@
  */
 package de.haumacher.values;
 
+/**
+ * Algorithm providing the default value of a {@link Property}.
+ * 
+ * @see Property#getInitializer()
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
 public interface Initializer<T> {
 
+	/**
+	 * The initial value of the using {@link Property}.
+	 */
 	T init();
 
 }

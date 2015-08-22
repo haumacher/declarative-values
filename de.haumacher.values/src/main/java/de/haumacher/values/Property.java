@@ -19,20 +19,65 @@
  */
 package de.haumacher.values;
 
+import de.haumacher.values.annotate.Name;
+
+/**
+ * Description of a single property of a {@link Value} type.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
 public interface Property {
 
+	/**
+	 * The {@link ValueDescriptor} owning this {@link Property}.
+	 */
 	ValueDescriptor<?> getDescriptor();
 
+	/**
+	 * The name of this {@link Property}.
+	 * 
+	 * <p>
+	 * The name of a {@link Property} is either defined by the getter method in
+	 * its {@link Value} type by removing the getter prefix and converting the
+	 * first character of the remaining name to lower-case, or by a {@link Name}
+	 * annotation on the getter method.
+	 * </p>
+	 */
 	String getName();
-	
-	Kind getKind();
 
+	/**
+	 * The content type of this {@link Property}.
+	 * 
+	 * <p>
+	 * Values {@link Value#putValue(Property, Object) stored} to this property,
+	 * must be compatible with this type.
+	 * </p>
+	 */
 	Class<?> getType();
 	
-	Property getIndexProperty();
+	/**
+	 * The content {@link Kind} of this {@link Property}.
+	 */
+	Kind getKind();
 
+	/**
+	 * This {@link Initializer} of this property providing its initial value
+	 * after {@link ValueFactory#newInstance(Class) construction}.
+	 */
+	Initializer<Object> getInitializer();
+
+	/**
+	 * The {@link Parser} for a {@link Kind#PRIMITIVE} property that is able to
+	 * de-serialize/serialize its value from/to a string representation.
+	 */
 	Parser<Object> getParser();
 	
-	Initializer<Object> getInitializer();
-	
+	/**
+	 * For an {@link Kind#INDEX} {@link Property}, the {@link Property} of the
+	 * {@link #getType() content type} that is used to index the content
+	 * collection.
+	 */
+	Property getIndexProperty();
+
 }

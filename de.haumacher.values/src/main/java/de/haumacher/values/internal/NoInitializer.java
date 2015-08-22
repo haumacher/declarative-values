@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2015, Bernhard Haumacher. 
+ * Copyright (c) 2015, Bernhard Haumacher. 
  * All rights reserved.
  * 
  * This library is free software; you can redistribute it and/or
@@ -19,20 +19,20 @@
  */
 package de.haumacher.values.internal;
 
-import de.haumacher.values.internal.ValueDescriptorImpl.ValueImpl;
+import de.haumacher.values.Initializer;
+import de.haumacher.values.annotate.DefaultValue;
 
-
-
-class SetHandler extends PropertyHandler {
-
-	public SetHandler(int index) {
-		super(index);
-	}
+/**
+ * Placeholder for a missing value in {@link DefaultValue#initializer()}.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
+public class NoInitializer implements Initializer<Object> {
 
 	@Override
-	public Object handlePropertyAccess(Object self, ValueImpl impl, Object... args) {
-		impl.values[index] = args[0];
-		return null;
+	public Object init() {
+		throw new UnsupportedOperationException();
 	}
 
 }

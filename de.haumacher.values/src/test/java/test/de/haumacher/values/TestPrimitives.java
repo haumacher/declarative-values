@@ -33,6 +33,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
  * @version $Revision: $ $Author: $ $Date: $
  */
+@SuppressWarnings("javadoc")
 public class TestPrimitives extends TestCase {
 	public interface AllPrimitives {
 		

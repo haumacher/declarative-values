@@ -35,6 +35,12 @@ import de.haumacher.values.Property;
 import de.haumacher.values.Value;
 import de.haumacher.values.ValueDescriptor;
 
+/**
+ * Internal implementation of {@link ValueDescriptor}.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
 public class ValueDescriptorImpl<T> implements ValueDescriptor<T> {
 
 	static final class ValueImpl implements InvocationHandler {
@@ -93,7 +99,7 @@ public class ValueDescriptorImpl<T> implements ValueDescriptor<T> {
 			}
 			
 			ValueDescriptorImpl<?> descriptor = impl.descriptor;
-			if (! descriptor.valueInterface.isInstance(other)) {
+			if (!descriptor.getValueInterface().isInstance(other)) {
 				return false;
 			}
 			
@@ -142,7 +148,7 @@ public class ValueDescriptorImpl<T> implements ValueDescriptor<T> {
 			ValueDescriptorImpl<?> descriptor = impl.descriptor;
 			
 			boolean first = true;
-			StringBuilder result = new StringBuilder(descriptor.valueInterface.getName());
+			StringBuilder result = new StringBuilder(descriptor.getValueInterface().getName());
 			result.append('{');
 			for (PropertyImpl property : descriptor.internalGetProperties()) {
 				Object selfValue = property.getGetHandler().handlePropertyAccess(self, impl);
@@ -202,6 +208,12 @@ public class ValueDescriptorImpl<T> implements ValueDescriptor<T> {
 	
 	private Map<Method, MethodHandler> handlerByMethod = new HashMap<Method, MethodHandler>();
 	
+	/**
+	 * Creates a {@link ValueDescriptorImpl}.
+	 *
+	 * @param valueInterface
+	 *        The {@link Value} interface to analyze.
+	 */
 	public ValueDescriptorImpl(Class<T> valueInterface) {
 		this.valueInterface = valueInterface;
 		this.implInterfaces = new Class<?>[] {valueInterface, Value.class};
@@ -212,6 +224,9 @@ public class ValueDescriptorImpl<T> implements ValueDescriptor<T> {
 		return valueInterface;
 	}
 
+	/**
+	 * Completes the analysis of the {@link #getValueInterface()}.
+	 */
 	public void init() {
 		Map<String, PropertyImpl> propertyByRawName = new HashMap<String, PropertyImpl>();
 		Map<Method, PropertyImpl> propertyByMethod = new HashMap<Method, PropertyImpl>();

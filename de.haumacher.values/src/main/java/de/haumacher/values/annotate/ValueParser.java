@@ -24,16 +24,25 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import de.haumacher.values.Kind;
 import de.haumacher.values.Parser;
+import de.haumacher.values.Property;
 
 /**
- * @version   $Revision: 106 $  $Author: dbu $  $Date: 2012-04-26 10:00:26 +0200 (Thu, 26 Apr 2012) $
+ * Annotation of the {@link Parser} class on the getter method of a
+ * {@link Kind#PRIMITIVE} {@link Property}.
+ * 
+ * @version $Revision: 106 $ $Author: dbu $ $Date: 2012-04-26 10:00:26 +0200
+ *          (Thu, 26 Apr 2012) $
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface ValueParser {
 	
-	Class<? extends Parser> value();
+	/**
+	 * {@link Parser} class to use for the annotated {@link Property}.
+	 */
+	Class<? extends Parser<?>>value();
 
 }
 

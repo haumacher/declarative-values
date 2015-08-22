@@ -19,8 +19,19 @@
  */
 package de.haumacher.values;
 
+/**
+ * A {@link Factory} creates instances of a certain {@link Value} type.
+ * 
+ * @see ValueFactory#newFactory(Class)
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ * @version $Revision: $ $Author: $ $Date: $
+ */
 public interface Factory<T> {
 
+	/**
+	 * Create a new instance of this {@link Factory}s type.
+	 */
 	T newInstance();
 	
 }
