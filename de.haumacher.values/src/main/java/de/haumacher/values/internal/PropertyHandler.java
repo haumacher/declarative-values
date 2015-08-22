@@ -19,9 +19,21 @@
  */
 package de.haumacher.values.internal;
 
+import de.haumacher.values.Property;
+import de.haumacher.values.internal.ValueDescriptorImpl.ValueImpl;
 
+/**
+ * {@link MethodHandler} for a certain {@link Property}.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ */
 abstract class PropertyHandler implements MethodHandler {
 
+	/**
+	 * The storage index of the property's value.
+	 * 
+	 * @see ValueImpl#values
+	 */
 	protected final int index;
 
 	public PropertyHandler(int index) {

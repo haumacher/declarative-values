@@ -40,7 +40,6 @@ import test.de.haumacher.values.TestValueFactory.AllTypes.Nested;
  * common types.
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
  */
 @SuppressWarnings("javadoc")
 public class TestValueFactory extends TestCase {

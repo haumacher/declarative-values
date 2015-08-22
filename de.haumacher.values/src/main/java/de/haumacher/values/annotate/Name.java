@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
  * </p>
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
+ * @version Since 0.2.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

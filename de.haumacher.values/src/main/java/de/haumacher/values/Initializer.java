@@ -25,7 +25,7 @@ package de.haumacher.values;
  * @see Property#getInitializer()
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
+ * @version Since 0.2.0
  */
 public interface Initializer<T> {
 

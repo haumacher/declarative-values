@@ -22,6 +22,12 @@ package de.haumacher.values.internal;
 import de.haumacher.values.Initializer;
 import de.haumacher.values.internal.ValueDescriptorImpl.ValueImpl;
 
+/**
+ * {@link SetHandler} that replaces a <code>null</code> value with the
+ * properties initial value.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ */
 class NonNullSetHandler extends SetHandler {
 
 	private final Initializer<?> initializer;

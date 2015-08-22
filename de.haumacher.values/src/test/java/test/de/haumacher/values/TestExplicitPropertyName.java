@@ -30,7 +30,6 @@ import junit.framework.TestCase;
  * Test the {@link Name} annotation for properties.
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
  */
 @SuppressWarnings("javadoc")
 public class TestExplicitPropertyName extends TestCase {

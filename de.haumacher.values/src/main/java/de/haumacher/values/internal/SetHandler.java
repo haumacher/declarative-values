@@ -19,10 +19,15 @@
  */
 package de.haumacher.values.internal;
 
+import de.haumacher.values.Property;
 import de.haumacher.values.internal.ValueDescriptorImpl.ValueImpl;
 
 
-
+/**
+ * {@link PropertyHandler} that implements a {@link Property} setter.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ */
 class SetHandler extends PropertyHandler {
 
 	public SetHandler(int index) {

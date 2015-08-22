@@ -30,7 +30,7 @@ import de.haumacher.values.internal.NoInitializer;
  * Annotation of the default value of a {@link Property}.
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
+ * @version Since 0.2.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DefaultValue {

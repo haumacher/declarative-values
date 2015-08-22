@@ -25,7 +25,7 @@ import de.haumacher.values.annotate.Name;
  * Description of a single property of a {@link Value} type.
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
+ * @version Since 0.2.0
  */
 public interface Property {
 

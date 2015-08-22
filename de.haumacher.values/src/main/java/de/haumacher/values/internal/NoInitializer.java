@@ -26,7 +26,7 @@ import de.haumacher.values.annotate.DefaultValue;
  * Placeholder for a missing value in {@link DefaultValue#initializer()}.
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
+ * @version Since 0.2.0
  */
 public class NoInitializer implements Initializer<Object> {
 

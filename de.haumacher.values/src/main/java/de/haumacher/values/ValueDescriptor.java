@@ -27,7 +27,7 @@ import java.util.Map;
  * @see ValueFactory#getDescriptor(Class)
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
+ * @version Since 0.2.0
  */
 public interface ValueDescriptor<T> {
 

@@ -28,7 +28,7 @@ import java.util.Map;
  * @see Property#getKind()
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
+ * @version Since 0.2.0
  */
 public enum Kind {
 

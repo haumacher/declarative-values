@@ -31,7 +31,6 @@ import junit.framework.TestCase;
  * Test case for the {@link ValueParser} annotation.
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
  */
 @SuppressWarnings("javadoc")
 public class TestCustomParser extends TestCase {

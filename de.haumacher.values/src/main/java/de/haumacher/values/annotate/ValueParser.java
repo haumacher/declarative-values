@@ -32,8 +32,8 @@ import de.haumacher.values.Property;
  * Annotation of the {@link Parser} class on the getter method of a
  * {@link Kind#PRIMITIVE} {@link Property}.
  * 
- * @version $Revision: 106 $ $Author: dbu $ $Date: 2012-04-26 10:00:26 +0200
- *          (Thu, 26 Apr 2012) $
+ * @author Danie Busche
+ * @version Since 0.2.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

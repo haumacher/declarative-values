@@ -45,7 +45,11 @@ import de.haumacher.values.annotate.Reference;
 import de.haumacher.values.annotate.ValueParser;
 import de.haumacher.values.format.ObjectParser;
 
-
+/**
+ * Internal implementation of a {@link Property}.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ */
 class PropertyImpl implements Property {
 
 	static abstract class PrimitiveParser<T> extends ObjectParser<T> {

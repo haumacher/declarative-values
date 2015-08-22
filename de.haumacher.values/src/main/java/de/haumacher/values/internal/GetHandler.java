@@ -22,6 +22,11 @@ package de.haumacher.values.internal;
 
 import de.haumacher.values.internal.ValueDescriptorImpl.ValueImpl;
 
+/**
+ * {@link MethodHandler} for implementing a property getter.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ */
 class GetHandler extends PropertyHandler {
 
 	public GetHandler(int index) {

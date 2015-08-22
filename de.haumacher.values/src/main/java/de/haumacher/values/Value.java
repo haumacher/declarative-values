@@ -39,7 +39,7 @@ package de.haumacher.values;
  * </p>
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
+ * @version Since 0.2.0
  */
 public interface Value {
 

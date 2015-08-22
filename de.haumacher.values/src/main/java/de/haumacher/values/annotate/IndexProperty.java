@@ -29,7 +29,7 @@ import de.haumacher.values.Kind;
  * content's property for indexing the value collection.
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
+ * @version Since 0.2.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IndexProperty {

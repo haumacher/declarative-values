@@ -31,7 +31,6 @@ import junit.framework.TestCase;
  * Test case for primitive properties of {@link Value} interfaces.
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
  */
 @SuppressWarnings("javadoc")
 public class TestPrimitives extends TestCase {

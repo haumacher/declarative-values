@@ -26,7 +26,7 @@ import de.haumacher.values.Parser;
  * Base class for custom {@link Parser} implementations.
  * 
  * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
- * @version $Revision: $ $Author: $ $Date: $
+ * @version Since 0.2.0
  */
 public abstract class ObjectParser<T> implements Parser<T>, Initializer<T> {
 	

@@ -19,11 +19,31 @@
  */
 package de.haumacher.values.internal;
 
+import java.lang.reflect.InvocationHandler;
+
+import de.haumacher.values.Value;
 import de.haumacher.values.internal.ValueDescriptorImpl.ValueImpl;
 
-
+/**
+ * Implementation of a single method of a {@link Value} instance.
+ * 
+ * @author <a href="mailto:haui@haumacher.de">Bernhard Haumacher</a>
+ */
 interface MethodHandler {
 
+	/**
+	 * Handles the invocation of a single method within an
+	 * {@link InvocationHandler} for a generic proxy implementation of a
+	 * {@link Value} type.
+	 * 
+	 * @param self
+	 *        The proxy implementing the concrete {@link Value} instance.
+	 * @param impl
+	 *        The internal object providing the state an method implementations.
+	 * @param args
+	 *        The method arguments
+	 * @return The result of the implemented method.
+	 */
 	Object handlePropertyAccess(Object self, ValueImpl impl, Object...args);
 
 }
