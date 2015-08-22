@@ -234,7 +234,7 @@ public class TestPrimitives extends TestCase {
 		assertEquals("Y", v.getB().getY());
 	}
 	
-	private <T> T storeLoad(Class<T> type, T value) {
+	public static <T> T storeLoad(Class<T> type, T value) {
 		Properties storage = new Properties();
 		PropertiesUtil.save(storage, (Value) value);
 		T result = ValueFactory.newInstance(type);
