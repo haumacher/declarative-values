@@ -25,13 +25,17 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>de.haumacher</groupId>
-	<artifactId>values</artifactId>
-	<version>0.2-SNAPSHOT</version>
+	<groupId>de.haumacher.values</groupId>
+	<artifactId>declarative-values</artifactId>
+	<version>0.2.0</version>
 
 	<name>Declarative value classes</name>
 
 	<description></description>
+
+	<organization>
+		<name>haumacher.de</name>
+	</organization>
 
 	<licenses>
 		<license>
@@ -49,6 +53,11 @@
 		</developer>
 	</developers>
 
+	<scm>
+		<url>https://github.com/haumacher/declarative-values.git</url>
+		<developerConnection>haumacher</developerConnection>
+	</scm>
+	
 	<repositories>
 	</repositories>
 
@@ -80,6 +89,31 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -88,7 +122,4 @@
 		</plugins>
 	</reporting>
 
-	<organization>
-		<name>haumacher.de</name>
-	</organization>
 </project>
